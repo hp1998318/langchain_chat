@@ -1,5 +1,7 @@
 # Getting Started with Create React App
 
+api 服务 https://github.com/hp1998318/lang_chat_api.git
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
