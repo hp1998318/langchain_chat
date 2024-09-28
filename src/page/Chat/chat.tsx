@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useRef, useState, memo } from "react";
 import { Chat } from "@douyinfe/semi-ui";
 import { sendMessage } from "../../request/index";
 import { MessageType, RoleEnum, StatusEnum } from "./type";
@@ -29,10 +29,10 @@ const commonOuterStyle = {
   border: "1px solid var(--semi-color-border)",
   borderRadius: "16px",
   width: "100%",
-  height: "100%",
+  height: 500,
 };
 const uploadProps = { action: "https://api.semi.design/upload" };
-const ChatBot = () => {
+const ChatBot: React.FC = memo(() => {
   const [message, setMessage] = useState<Array<MessageType>>([]);
   const chatRef = useRef();
   const onMessageSend = useCallback((i: string) => {
@@ -76,7 +76,7 @@ const ChatBot = () => {
     <div>
       <Chat
         style={commonOuterStyle}
-        chats={[]}
+        chats={message as any}
         refs={chatRef}
         roleConfig={roleInfo}
         onChatsChange={onChatsChange}
@@ -85,5 +85,5 @@ const ChatBot = () => {
       />
     </div>
   );
-};
+});
 export default ChatBot;
